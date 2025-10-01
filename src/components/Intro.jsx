@@ -17,7 +17,7 @@ export default function GettingStarted() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-200 to-blue-400">
+    <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-white shadow-lg rounded-xl p-8 max-w-2xl w-full">
         <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-6">
           Getting Started

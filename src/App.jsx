@@ -17,14 +17,15 @@ function App() {
                 <h1 className="text-3xl font-bold mb-4 text-center">
                   STBG/CMAQ Application
                 </h1>
+                <br />
                 <GettingStarted />
+                <br />
                 <CostEstimate />
+                <br />
                 <Form />
               </>
             }
           />
-          {/* You can add more routes here as your application grows */}
-          {/* <Route path="/about" element={<About />} /> */}
         </Routes>
       </div>
     </Router>
