@@ -1,6 +1,10 @@
 #root {
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
@@ -48,4 +52,11 @@ body {
 
 .read-the-docs {
   color: #888;
+}
+ul {
+  text-align: left;
+  line-height: 1.6;
+}
+li {
+  margin-bottom: 0.25em;
 }

@@ -19,10 +19,11 @@ function App() {
                 </h1>
                 <br />
                 <GettingStarted />
-                <br />
-                <CostEstimate />
+
                 <br />
                 <Form />
+                <br />
+                <CostEstimate />
               </>
             }
           />

@@ -76,7 +76,10 @@ export default function ProjectForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div
+      id="form"
+      className="min-h-screen bg-gray-100 flex items-center justify-center p-4"
+    >
       <div className="max-w-3xl w-full bg-white shadow-xl rounded-lg p-8">
         <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
           Application Information

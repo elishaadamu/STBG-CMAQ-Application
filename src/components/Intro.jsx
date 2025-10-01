@@ -1,21 +1,6 @@
 import React, { useState } from "react";
 
 export default function GettingStarted() {
-  const [formData, setFormData] = useState({
-    projectType: "",
-    nepaReview: "",
-    functionalClass: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleBegin = () => {
-    console.log("Selections:", formData);
-    alert("Application Started with selections in console.");
-  };
-
   return (
     <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-white shadow-lg rounded-xl p-8 max-w-2xl w-full">
@@ -51,28 +36,10 @@ export default function GettingStarted() {
         <div className="mb-6">
           <h2 className="font-bold text-lg mb-2">Project Type</h2>
           <div className="space-y-2">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="projectType"
-                value="Highway"
-                checked={formData.projectType === "Highway"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Highway
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="projectType"
-                value="Bike/Ped, TDM, and Transit"
-                checked={formData.projectType === "Bike/Ped, TDM, and Transit"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Bike/Ped, TDM, and Transit
-            </label>
+            <ul className="list-disc list-inside ml-4">
+              <li>Highway</li>
+              <li>Bike/Ped, TDM, and Transit</li>
+            </ul>
           </div>
         </div>
 
@@ -82,43 +49,11 @@ export default function GettingStarted() {
             Required National Environmental Policy Act (NEPA) Review
           </h2>
           <div className="space-y-2">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="nepaReview"
-                value="Categorical Exclusion (CE)"
-                checked={formData.nepaReview === "Categorical Exclusion (CE)"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Categorical Exclusion (CE)
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="nepaReview"
-                value="Environmental Assessment (EA)"
-                checked={
-                  formData.nepaReview === "Environmental Assessment (EA)"
-                }
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Environmental Assessment (EA)
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="nepaReview"
-                value="Environmental Impact Statement (EIS)"
-                checked={
-                  formData.nepaReview === "Environmental Impact Statement (EIS)"
-                }
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Environmental Impact Statement (EIS)
-            </label>
+            <ul className="list-disc list-inside ml-4">
+              <li>Categorical Exclusion (CE)</li>
+              <li>Environmental Assessment (EA)</li>
+              <li>Environmental Impact Statement (EIS)</li>
+            </ul>
           </div>
         </div>
 
@@ -128,50 +63,22 @@ export default function GettingStarted() {
             For Roadway projects, please indicate functional classification
           </h2>
           <div className="space-y-2">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="functionalClass"
-                value="Principal Arterial"
-                checked={formData.functionalClass === "Principal Arterial"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Principal Arterial
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="functionalClass"
-                value="Minor Arterial"
-                checked={formData.functionalClass === "Minor Arterial"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Minor Arterial
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="functionalClass"
-                value="Major Collector"
-                checked={formData.functionalClass === "Major Collector"}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
-              Major Collector
-            </label>
+            <ul className="list-disc list-inside ml-4">
+              <li>Principal Arterial</li>
+              <li>Minor Arterial</li>
+              <li>Major Collector</li>
+            </ul>
           </div>
         </div>
 
         {/* Begin Button */}
         <div className="text-center">
-          <button
-            onClick={handleBegin}
+          <a
+            href="#form"
             className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
           >
             Begin Application
-          </button>
+          </a>
         </div>
       </div>
     </div>
