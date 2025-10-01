@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function ProjectForm() {
   const initialFormData = {
@@ -66,15 +67,19 @@ export default function ProjectForm() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/projects",
+        `${process.env.REACT_APP_API_URL}/api/projects`,
         formData
       );
-      alert("Form submitted successfully!");
+      toast.success("Form submitted successfully!");
       console.log(response.data);
       setFormData(initialFormData); // Reset form after successful submission
+      setErrors({}); // Clear errors on success
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("There was an error submitting the form.");
+      toast.error(
+        error.response?.data?.message ||
+          "There was an error submitting the form."
+      );
     }
   };
 

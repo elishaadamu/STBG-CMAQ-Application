@@ -183,7 +183,7 @@ export default function ViewTable() {
       )}
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50 p-4">
           <div className="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full">
             <h3 className="text-xl font-semibold mb-4">
               Full Project Description

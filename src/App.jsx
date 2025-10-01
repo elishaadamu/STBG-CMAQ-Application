@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css"; // Import the CSS file
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,19 +10,29 @@ import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Initialize state from localStorage to persist login across page refreshes
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    () => !!localStorage.getItem("isLoggedIn")
+  );
 
   const handleLogin = () => {
+    localStorage.setItem("isLoggedIn", "true"); // Persist login state
     setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn"); // Clear login state
     setIsLoggedIn(false);
   };
 
   return (
     <Router>
       <div className="App">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+        />
         <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />

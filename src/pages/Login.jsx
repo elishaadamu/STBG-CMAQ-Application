@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
     try {
       await axios.post("http://localhost:3001/api/login", {
         username,
         password,
       });
+      toast.success("Login successful!");
       onLogin();
       navigate("/table"); // Redirect to table view on successful login
     } catch (err) {
-      setError(
+      toast.error(
         err.response?.data?.message || "An error occurred during login."
       );
     }
@@ -62,7 +62,6 @@ export default function Login({ onLogin }) {
               required
             />
           </div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
             className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700"
