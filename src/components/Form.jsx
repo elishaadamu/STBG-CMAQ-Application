@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function ProjectForm() {
-  const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     projectName: "",
     jurisdiction: "",
     routeNumber: "",
@@ -14,7 +13,10 @@ export default function ProjectForm() {
     upc: "",
     funding: { cmaq: false, cr: false, stbg: false },
     submittedBefore: "",
-  });
+  };
+
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,11 +66,12 @@ export default function ProjectForm() {
 
     try {
       const response = await axios.post(
-        "https://backend.com.render/api/projects",
+        "http://localhost:3001/api/projects",
         formData
       );
       alert("Form submitted successfully!");
       console.log(response.data);
+      setFormData(initialFormData); // Reset form after successful submission
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("There was an error submitting the form.");

@@ -1,30 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import "./App.css"; // Import the CSS file
-import Form from "./components/Form";
-import GettingStarted from "./components/Intro";
-import CostEstimate from "./components/Cost";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import ViewTable from "./pages/ViewTable";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <div className="App">
+        <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route
-            path="/"
+            path="/table"
             element={
-              <>
-                <h1 className="text-3xl font-bold mb-4 text-center">
-                  STBG/CMAQ Application
-                </h1>
-                <br />
-                <GettingStarted />
-
-                <br />
-                <Form />
-                <br />
-                <CostEstimate />
-              </>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <ViewTable />
+              </ProtectedRoute>
             }
           />
         </Routes>
